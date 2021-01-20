@@ -31,8 +31,8 @@ RUN useradd -m -u ${UID} patuser
 USER patuser
 
 # Get the server files
-COPY --from=downloader --chown patuser /patserver $INSTALL_LOC
-COPY --chown patuser ./docker-entrypoint.sh /docker-entrypoint.sh
+COPY --from=downloader --chown=patuser /patserver $INSTALL_LOC
+COPY --chown=patuser ./docker-entrypoint.sh /docker-entrypoint.sh
 
 VOLUME $REPLAYS_LOC
 EXPOSE 20545
