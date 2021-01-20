@@ -27,14 +27,12 @@ docker run -d -p 20545:20545 pat
 
 Build Arg Key | Default | Decription
 ---|---|---
-`PA_STREAM_NAME` | `stable` | Build stream to download the server from. See [here](https://github.com/planetary-annihilation/papatcher/blob/master/papatcher.go#L245). Valid streams are `historical`, `legacy`, `legacy-pte`, `modern-pte`, `stable`.
+`PA_STREAM_NAME` | `stable` | Build stream to download the server from. Valid streams reported by [`papatcher`](https://github.com/planetary-annihilation/papatcher) as of 20th Jan 2021 are `historical`, `legacy`, `legacy-pte`, `modern-pte`, `stable`. See [here](https://github.com/planetary-annihilation/papatcher/blob/master/papatcher.go#L245).
 `PANET_USERNAME` | N/A | Username to login to PANet with. Needs to own the game or be linked to a steam account which does. Required.
 `PANET_PASSWORD` | N/A | Password for the provided username. Required.
 `UID` | `999` | Unix UID to run the container as.
 
-**Notes:**
-- *the UID of the user in the container defaults to `999`, pass `UID` as a build arg to change this*
-- *Credentials for the account are **not stored in the final image***.
+**Note:** *Credentials for the account are **not stored in the final image**.*
 
 ### Running
 
