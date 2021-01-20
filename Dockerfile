@@ -19,6 +19,7 @@ ARG UID=999
 
 ENV INSTALL_LOC=/patserver
 ENV REPLAYS_LOC=/replays
+ENV DEBIAN_FRONTEND=noninteractive
 
 ENV PAT_SERVER_NAME="A dockerised Planetary Annihilation: Titans server"
 
