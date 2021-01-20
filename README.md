@@ -13,9 +13,6 @@ A [docker](https://www.docker.com/) image for running a dedicated server for the
 
 ## Usage
 
-You **must** have a PANet account which owns the game to build this image.
-Credentials for the account are passed as build args and are **__not stored in the final image__**.
-
 An example sequence to build then run:
 
 ```bash
@@ -26,17 +23,26 @@ docker build \
 docker run -d -p 20545:20545 pat
 ```
 
-**Note:** *the UID of the user in the container defaults to `999`, pass `UID` as a build arg to change this*
+### Building
 
-### Ports
+Build Arg Key | Default | Decription
+---|---|---
+`PA_STREAM_NAME` | `stable` | Build stream to download the server from. See [here](https://github.com/planetary-annihilation/papatcher/blob/master/papatcher.go#L245).
+`PANET_USERNAME` | N/A | Username to login to PANet with. Needs to own the game or be linked to a steam account which does. Required.
+`PANET_PASSWORD` | N/A | Password for the provided username. Required.
+`UID` | `999` | Unix UID to run the container as.
+
+**Notes:**
+- *the UID of the user in the container defaults to `999`, pass `UID` as a build arg to change this*
+- *Credentials for the account are **not stored in the final image***.
+
+### Running
 
 Port `20545` *must* be opened for client connections.
 
-### Volumes
-
 The container uses just one volume, to store replays: `/replays`.
 
-**Note:** *if you use a [bind mount](https://docs.docker.com/storage/bind-mounts/), the host path you mount into the container *must* be owned by the UID you passed to the build (default `999`)*
+**Note:** *if you use a [bind mount](https://docs.docker.com/storage/bind-mounts/), the host path you mount into the container *must* be owned by the UID you passed to the build (see above table)*
 
 ## Licensing
 
