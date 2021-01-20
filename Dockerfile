@@ -1,5 +1,6 @@
 FROM golang:latest AS downloader
 
+ARG PA_STREAM_NAME=stable
 ARG PANET_USERNAME
 ARG PANET_PASSWORD
 
@@ -7,7 +8,7 @@ ARG PANET_PASSWORD
 RUN mkdir -p /patserver
 RUN curl -o /tmp/papatcher.go https://raw.githubusercontent.com/planetary-annihilation/papatcher/master/papatcher.go
 RUN go run /tmp/papatcher.go \
-    --stream=stable \
+    --stream=${PA_STREAM_NAME} \
     --update-only \
     --dir=/patserver \
     --username ${PANET_USERNAME} \
@@ -20,8 +21,6 @@ ARG UID=999
 ENV INSTALL_LOC=/patserver
 ENV REPLAYS_LOC=/replays
 ENV DEBIAN_FRONTEND=noninteractive
-
-ENV PAT_SERVER_NAME="A dockerised Planetary Annihilation: Titans server"
 
 # Install PAT dependencies
 RUN apt-get update && \

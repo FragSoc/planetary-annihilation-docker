@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eo pipefail
 
-PAT_EXECUTABLE \
+${INSTALL_LOC}/PAT_EXECUTABLE \
     --headless \
     --allow-lan \
     --game-mode PAExpansion1:config \
