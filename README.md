@@ -13,10 +13,13 @@ A [docker](https://www.docker.com/) image for running a dedicated server for the
 
 ## Usage
 
+You must have a PANet account which owns planetary annihilation to build the image, since the dedicated server requires ownership of the game to download.
+Credentials for the account are passed as build args and are **__not stored in the final image__**.
+
 An example sequence to build then run:
 
 ```bash
-docker build -t pat .
+docker build --build-arg PANET_USERNAME=<panet username> --build-arg PANET_PASSWORD=<panet password> -t pat .
 docker run -d -p 20545:20545 pat
 ```
 
