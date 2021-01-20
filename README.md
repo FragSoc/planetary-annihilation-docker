@@ -11,9 +11,7 @@
 
 A [docker](https://www.docker.com/) image for running a dedicated server for the game [Planetary Annihilation: Titans](https://planetaryannihilation.com/).
 
-## Usage
-
-An example sequence to build then run:
+## Quickstart
 
 ```bash
 docker build \
@@ -23,7 +21,7 @@ docker build \
 docker run -d -p 20545:20545 pat
 ```
 
-### Building
+## Building
 
 Build Arg Key | Default | Decription
 ---|---|---
@@ -34,7 +32,7 @@ Build Arg Key | Default | Decription
 
 **Note:** *Credentials for the account are **not stored in the final image**.*
 
-### Running
+## Running
 
 Port `20545` *must* be opened for client connections.
 
@@ -42,7 +40,7 @@ The container uses just one volume, to store replays: `/replays`.
 
 **Note:** *if you use a [bind mount](https://docs.docker.com/storage/bind-mounts/), the host path you mount into the container *must* be owned by the UID you passed to the build (see above table)*
 
-#### Run Environment
+### Environment
 
 The container can be completely customised with environment variables:
 
