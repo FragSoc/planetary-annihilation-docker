@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eo pipefail
 
-${INSTALL_LOC}/PAT_EXECUTABLE \
+${INSTALL_LOC}/server \
     --headless \
     --allow-lan \
     --game-mode PAExpansion1:config \

@@ -17,6 +17,7 @@ RUN go run /tmp/papatcher.go \
 FROM ubuntu AS runner
 
 ARG UID=999
+ARG PA_STREAM_NAME=stable
 
 ENV INSTALL_LOC=/patserver
 ENV REPLAYS_LOC=/replays
@@ -31,10 +32,11 @@ RUN useradd -m -u ${UID} patuser
 USER patuser
 
 # Get the server files
-COPY --from=downloader --chown=patuser /patserver $INSTALL_LOC
+COPY --from=downloader --chown=patuser /patserver/$PA_STREAM_NAME $INSTALL_LOC
 COPY --chown=patuser ./docker-entrypoint.sh /docker-entrypoint.sh
 
 VOLUME $REPLAYS_LOC
 EXPOSE 20545
+WORKDIR $INSTALL_LOC
 ENTRYPOINT ["/bin/bash", "/docker-entrypoint.sh"]
 CMD ["--max-players", "12", "--server-name", "Docker PAT Server", "--server-password", "letmein"]
