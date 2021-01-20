@@ -49,6 +49,7 @@ The container uses just one volume, to store replays: `/replays`.
 The container can be completely customised with environment variables:
 
 Var name | Default Value | Notes
+---|---|---
 `PA_TITANS_ENABLED` | `yes` | Any other value will disable the TITANS expansion on the server
 `PA_AI_ENABLED` | `yes` | Any other value will disable AI players on the server
 `PA_SERVER_NAME` | "A Dockerised PA:T Server" |
