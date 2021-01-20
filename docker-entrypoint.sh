@@ -21,10 +21,10 @@ COMMAND="${INSTALL_LOC}/server \
 # Check for titans enabling
 if [[ ${PA_TITANS_ENABLED} == "yes" ]]; then
     COMMAND="$COMMAND --game-mode PAExpansion1:config"
-    log "Titans ENABLED"
+    log "TITANS enabled"
 else
     COMMAND="$COMMAND --game-mode config"
-    log "Titans DISABLED"
+    log "TITANS disabled"
 fi
 
 # Check for AI enabling
@@ -36,6 +36,7 @@ fi
 # Check for password enabling
 if [[ -n ${PA_SERVER_PASSWORD} ]]; then
     COMMAND="$COMMAND --server-password ${PA_SERVER_PASSWORD}"
+    log "Password enabled"
 fi
 
 COMMAND="$COMMAND $@"
