@@ -25,7 +25,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install PAT dependencies
 RUN apt-get update && \
-    apt-get install -y libsdl2-dev libgl1 libstdc++6 libcurl4 libuuid1
+    apt-get install -y libsdl2 libgl1 libstdc++6 libcurl3-gnutls libuuid1
 
 # Create user
 RUN useradd -m -u ${UID} patuser
