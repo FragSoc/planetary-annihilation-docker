@@ -24,7 +24,7 @@ ENV PAT_SERVER_NAME="A dockerised Planetary Annihilation: Titans server"
 
 # Install PAT dependencies
 RUN apt-get update && \
-    apt-get install libsdl2 libgl1 libstdc++6 libcurl libuuid
+    apt-get install libsdl2-dev libgl1 libstdc++6 libcurl4 libuuid1
 
 # Get the server files
 COPY --from=downloader /patserver $INSTALL_LOC
