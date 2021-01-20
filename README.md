@@ -50,4 +50,4 @@ The few files in this repository are licensed under the [AGPL](https://www.gnu.o
 
 However, PA:T itself is licensed by [Planetary Annihilation Inc.](https://planetaryannihilation.com/news/planetary-annihilation-inc-the-future-of-pa-and-titans/).
 No credit is taken for the software running in this container.
-Read [their EULA](deadlink) for more information.
+Read [their TOS](https://planetaryannihilation.com/terms/) for more information.
