@@ -3,7 +3,7 @@ FROM golang:latest AS downloader
 ARG PANET_USERNAME
 ARG PANET_PASSWORD
 
-# Download papatcher and use it to download a DRM-free version of the server
+# Download papatcher and use it to download the server
 RUN mkdir -p /patserver
 RUN curl -o /tmp/papatcher.go https://raw.githubusercontent.com/planetary-annihilation/papatcher/master/papatcher.go
 RUN go run /tmp/papatcher.go \
@@ -24,7 +24,7 @@ ENV PAT_SERVER_NAME="A dockerised Planetary Annihilation: Titans server"
 
 # Install PAT dependencies
 RUN apt-get update && \
-    apt-get install libsdl2-dev libgl1 libstdc++6 libcurl4 libuuid1
+    apt-get install -y libsdl2-dev libgl1 libstdc++6 libcurl4 libuuid1
 
 # Get the server files
 COPY --from=downloader /patserver $INSTALL_LOC
