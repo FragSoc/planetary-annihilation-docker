@@ -35,8 +35,18 @@ USER patuser
 COPY --from=downloader --chown=patuser /patserver/$PA_STREAM_NAME $INSTALL_LOC
 COPY --chown=patuser ./docker-entrypoint.sh /docker-entrypoint.sh
 
+ENV PA_TITANS_ENABLED=yes
+ENV PA_AI_ENABLED=yes
+ENV PA_SERVER_NAME="A Dockerised PA:T Server"
+ENV PA_SERVER_PASSWORD="letmein"
+ENV PA_MAX_PLAYERS=12
+ENV PA_MAX_SPECTATORS=5
+ENV PA_SPECTATORS=5
+ENV PA_REPLAY_TIMEOUT=180
+ENV PA_GAMEOVER_TIMEOUT=360
+ENV PA_EMPTY_TIMEOUT=3600
+
 VOLUME $REPLAYS_LOC
 EXPOSE 20545
 WORKDIR $INSTALL_LOC
 ENTRYPOINT ["/bin/bash", "/docker-entrypoint.sh"]
-CMD ["--max-players", "12", "--server-name", "Docker PAT Server", "--server-password", "letmein"]
