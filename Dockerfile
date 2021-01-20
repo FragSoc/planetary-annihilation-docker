@@ -27,18 +27,15 @@ ENV PAT_SERVER_NAME="A dockerised Planetary Annihilation: Titans server"
 RUN apt-get update && \
     apt-get install -y libsdl2-dev libgl1 libstdc++6 libcurl4 libuuid1
 
+# Create user
+RUN useradd -m -u ${UID} patuser
+USER patuser
+
 # Get the server files
-COPY --from=downloader /patserver $INSTALL_LOC
-COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+COPY --from=downloader --chown patuser /patserver $INSTALL_LOC
+COPY --chown patuser ./docker-entrypoint.sh /docker-entrypoint.sh
 
-# Create user and setup permissions
-RUN useradd -m -u ${UID} planetaryannihilation && \
-    chown -R planetaryannihilation ${INSTALL_LOC} /docker-entrypoint.sh && \
-    chmod +x /docker-entrypoint.sh
-
-USER planetaryannihilation
 VOLUME $REPLAYS_LOC
-
 EXPOSE 20545
-
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/bin/sh", "/docker-entrypoint.sh"]
+CMD ["--max-players", "12", "--server-name", "Docker PAT Server", "--server-password", "letmein"]
