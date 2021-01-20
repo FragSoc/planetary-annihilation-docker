@@ -50,8 +50,8 @@ The container can be completely customised with environment variables:
 
 Var name | Default Value | Notes
 ---|---|---
-`PA_TITANS_ENABLED` | `yes` | Any other value will disable the TITANS expansion on the server
-`PA_AI_ENABLED` | `yes` | Any other value will disable AI players on the server
+`PA_TITANS_ENABLED` | yes | Any other value will disable the TITANS expansion on the server
+`PA_AI_ENABLED` | yes | Any other value will disable AI players on the server
 `PA_SERVER_NAME` | "A Dockerised PA:T Server" |
 `PA_SERVER_PASSWORD` | "letmein" | Leave blank for no password
 `PA_MAX_PLAYERS` | 12 |
