@@ -36,5 +36,5 @@ COPY --chown=patuser ./docker-entrypoint.sh /docker-entrypoint.sh
 
 VOLUME $REPLAYS_LOC
 EXPOSE 20545
-ENTRYPOINT ["/bin/sh", "/docker-entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/docker-entrypoint.sh"]
 CMD ["--max-players", "12", "--server-name", "Docker PAT Server", "--server-password", "letmein"]

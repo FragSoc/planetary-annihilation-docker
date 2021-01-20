@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -eo pipefail
 
 ${INSTALL_LOC}/PAT_EXECUTABLE \
