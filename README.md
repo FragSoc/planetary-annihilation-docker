@@ -13,13 +13,16 @@ A [docker](https://www.docker.com/) image for running a dedicated server for the
 
 ## Usage
 
-You must have a PANet account which owns planetary annihilation to build the image, since the dedicated server requires ownership of the game to download.
+You **must** have a PANet account which owns the game to build this image.
 Credentials for the account are passed as build args and are **__not stored in the final image__**.
 
 An example sequence to build then run:
 
 ```bash
-docker build --build-arg PANET_USERNAME=<panet username> --build-arg PANET_PASSWORD=<panet password> -t pat .
+docker build \
+    --build-arg PANET_USERNAME=<panet username> \
+    --build-arg PANET_PASSWORD=<panet password> \
+    -t pat .
 docker run -d -p 20545:20545 pat
 ```
 
@@ -37,7 +40,7 @@ The container uses just one volume, to store replays: `/replays`.
 
 ## Licensing
 
-The few files in this repository are licensed under the [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html).
+The few files in this repository are licensed under the [AGPL](https://www.gnu.org/licenses/agpl-3.0.en.html).
 
 However, PA:T itself is licensed by [Planetary Annihilation Inc.](https://planetaryannihilation.com/news/planetary-annihilation-inc-the-future-of-pa-and-titans/).
 No credit is taken for the software running in this container.
