@@ -48,16 +48,17 @@ The container uses just one volume, to store replays: `/replays`.
 
 The container can be completely customised with environment variables:
 
-- `PA_TITANS_ENABLED` defaults to `yes` and on any other value will disable the TITANS expansion on the server
-- `PA_AI_ENABLED` defaults to `yes` and on any other value will disable AI players on the server
-- `PA_SERVER_NAME` defaults to "A Dockerised PA:T Server"
-- `PA_SERVER_PASSWORD` defaults to "letmein", leave blank for no password
-- `PA_MAX_PLAYERS` defaults to 12
-- `PA_MAX_SPECTATORS` defaults to 5
-- `PA_SPECTATORS` defaults to 5
-- `PA_REPLAY_TIMEOUT` defaults to 180
-- `PA_GAMEOVER_TIMEOUT` defaults to 360
-- `PA_EMPTY_TIMEOUT` defaults to 3600
+Var name | Default Value | Notes
+`PA_TITANS_ENABLED` | `yes` | Any other value will disable the TITANS expansion on the server
+`PA_AI_ENABLED` | `yes` | Any other value will disable AI players on the server
+`PA_SERVER_NAME` | "A Dockerised PA:T Server" |
+`PA_SERVER_PASSWORD` | "letmein" | Leave blank for no password
+`PA_MAX_PLAYERS` | 12 |
+`PA_MAX_SPECTATORS` | 5 |
+`PA_SPECTATORS` | 5 |
+`PA_REPLAY_TIMEOUT` | 180 |
+`PA_GAMEOVER_TIMEOUT` | 360 |
+`PA_EMPTY_TIMEOUT` | 3600 |
 
 For more information, see the [official documentation](https://planetaryannihilation.com/guides/hosting-a-local-server/).
 
