@@ -34,6 +34,7 @@ USER patuser
 # Get the server files
 COPY --from=downloader --chown=patuser /patserver/$PA_STREAM_NAME $INSTALL_LOC
 COPY --chown=patuser ./docker-entrypoint.sh /docker-entrypoint.sh
+COPY healthcheck.sh /healthcheck.sh
 
 ENV PA_TITANS_ENABLED=yes
 ENV PA_AI_ENABLED=yes
@@ -46,6 +47,7 @@ ENV PA_REPLAY_TIMEOUT=180
 ENV PA_GAMEOVER_TIMEOUT=360
 ENV PA_EMPTY_TIMEOUT=3600
 
+HEALTHCHECK CMD /healthcheck.sh
 VOLUME $REPLAYS_LOC
 EXPOSE 20545
 WORKDIR $INSTALL_LOC
