@@ -11,9 +11,7 @@
 
 A [docker](https://www.docker.com/) image for running a dedicated server for the game [Planetary Annihilation: Titans](https://planetaryannihilation.com/).
 
-## Usage
-
-An example sequence to build then run:
+## Quickstart
 
 ```bash
 docker build \
@@ -23,20 +21,18 @@ docker build \
 docker run -d -p 20545:20545 pat
 ```
 
-### Building
+## Building
 
 Build Arg Key | Default | Decription
 ---|---|---
-`PA_STREAM_NAME` | `stable` | Build stream to download the server from. See [here](https://github.com/planetary-annihilation/papatcher/blob/master/papatcher.go#L245).
+`PA_STREAM_NAME` | `stable` | Build stream to download the server from. Valid streams reported by [`papatcher`](https://github.com/planetary-annihilation/papatcher) as of 20th Jan 2021 are `historical`, `legacy`, `legacy-pte`, `modern-pte`, `stable`. See [here](https://github.com/planetary-annihilation/papatcher/blob/master/papatcher.go#L245).
 `PANET_USERNAME` | N/A | Username to login to PANet with. Needs to own the game or be linked to a steam account which does. Required.
 `PANET_PASSWORD` | N/A | Password for the provided username. Required.
 `UID` | `999` | Unix UID to run the container as.
 
-**Notes:**
-- *the UID of the user in the container defaults to `999`, pass `UID` as a build arg to change this*
-- *Credentials for the account are **not stored in the final image***.
+**Note:** *Credentials for the account are **not stored in the final image**.*
 
-### Running
+## Running
 
 Port `20545` *must* be opened for client connections.
 
@@ -44,14 +40,14 @@ The container uses just one volume, to store replays: `/replays`.
 
 **Note:** *if you use a [bind mount](https://docs.docker.com/storage/bind-mounts/), the host path you mount into the container *must* be owned by the UID you passed to the build (see above table)*
 
-#### Run Environment
+### Environment
 
 The container can be completely customised with environment variables:
 
 Var name | Default Value | Notes
 ---|---|---
-`PA_TITANS_ENABLED` | `yes` | Any other value will disable the TITANS expansion on the server
-`PA_AI_ENABLED` | `yes` | Any other value will disable AI players on the server
+`PA_TITANS_ENABLED` | yes | Any other value will disable the TITANS expansion on the server
+`PA_AI_ENABLED` | yes | Any other value will disable AI players on the server
 `PA_SERVER_NAME` | "A Dockerised PA:T Server" |
 `PA_SERVER_PASSWORD` | "letmein" | Leave blank for no password
 `PA_MAX_PLAYERS` | 12 |
