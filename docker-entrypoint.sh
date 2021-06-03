@@ -43,4 +43,4 @@ COMMAND="$COMMAND $@"
 
 log "Starting server with command: $COMMAND"
 
-$COMMAND
+exec $COMMAND
