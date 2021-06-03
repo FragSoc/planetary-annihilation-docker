@@ -17,7 +17,7 @@ A [docker](https://www.docker.com/) image for running a dedicated server for the
 docker build \
     --build-arg PANET_USERNAME=<panet username> \
     --build-arg PANET_PASSWORD=<panet password> \
-    -t pat .
+    -t pat https://github.com/FragSoc/planetary-annihilation-docker.git
 docker run -d -p 20545:20545 pat
 ```
 
