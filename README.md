@@ -30,7 +30,7 @@ Build Arg Key | Default | Decription
 `PA_STREAM_NAME` | `stable` | Build stream to download the server from. Valid streams reported by [`papatcher`](https://github.com/planetary-annihilation/papatcher) as of 20th Jan 2021 are `historical`, `legacy`, `legacy-pte`, `modern-pte`, `stable`. See [here](https://github.com/planetary-annihilation/papatcher/blob/master/papatcher.go#L245).
 `UID` | `999` | Unix UID to run the container as.
 
-This container requires that you pass your [PANet]() username and password as [BuildKit secrets](https://docs.docker.com/develop/develop-images/build_enhancements/#new-docker-build-secret-information) `pa_user` and `pa_pass`.
+This container requires that you pass your [PANet](https://service.planetaryannihilation.net/User/RegisterDialog) username and password as [BuildKit secrets](https://docs.docker.com/develop/develop-images/build_enhancements/#new-docker-build-secret-information) `pa_user` and `pa_pass`.
 
 ## Running
 
