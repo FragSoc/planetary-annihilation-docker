@@ -10,8 +10,8 @@ RUN --mount=type=secret,id=pa_user --mount=type=secret,id=pa_pass \
         --stream=${PA_STREAM_NAME} \
         --update-only \
         --dir=/patserver \
-        --username $(cat /run/secrets/pa_username) \
-        --password $(cat /run/secrets/pa_password)
+        --username $(cat /run/secrets/pa_user) \
+        --password $(cat /run/secrets/pa_pass)
 
 FROM ubuntu AS runner
 
