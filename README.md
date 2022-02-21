@@ -14,9 +14,11 @@ A [docker](https://www.docker.com/) image for running a dedicated server for the
 ## Quickstart
 
 ```bash
+echo my_username > user.txt
+echo my_password > pass.txt # WARNING: this may store your password in your shell history, use an editor instead
 docker build \
-    --build-arg PANET_USERNAME=<panet username> \
-    --build-arg PANET_PASSWORD=<panet password> \
+    --secret id=pa_user,src=user.txt \
+    --secret id=pa_pass,src=pass.txt \
     -t pat https://github.com/FragSoc/planetary-annihilation-docker.git
 docker run -d -p 20545:20545 pat
 ```
@@ -26,11 +28,9 @@ docker run -d -p 20545:20545 pat
 Build Arg Key | Default | Decription
 ---|---|---
 `PA_STREAM_NAME` | `stable` | Build stream to download the server from. Valid streams reported by [`papatcher`](https://github.com/planetary-annihilation/papatcher) as of 20th Jan 2021 are `historical`, `legacy`, `legacy-pte`, `modern-pte`, `stable`. See [here](https://github.com/planetary-annihilation/papatcher/blob/master/papatcher.go#L245).
-`PANET_USERNAME` | N/A | Username to login to PANet with. Needs to own the game or be linked to a steam account which does. Required.
-`PANET_PASSWORD` | N/A | Password for the provided username. Required.
 `UID` | `999` | Unix UID to run the container as.
 
-**Note:** *Credentials for the account are **not stored in the final image**.*
+This container requires that you pass your [PANet]() username and password as [BuildKit secrets](https://docs.docker.com/develop/develop-images/build_enhancements/#new-docker-build-secret-information) `pa_user` and `pa_pass`.
 
 ## Running
 

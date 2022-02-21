@@ -1,18 +1,17 @@
 FROM golang:latest AS downloader
 
 ARG PA_STREAM_NAME=stable
-ARG PANET_USERNAME
-ARG PANET_PASSWORD
 
 # Download papatcher and use it to download the server
-RUN mkdir -p /patserver && \
+RUN --mount=type=secret,id=pa_user --mount=type=secret,id=pa_pass \
+    mkdir -p /patserver && \
     curl -o /tmp/papatcher.go https://raw.githubusercontent.com/planetary-annihilation/papatcher/master/papatcher.go && \
     go run /tmp/papatcher.go \
         --stream=${PA_STREAM_NAME} \
         --update-only \
         --dir=/patserver \
-        --username ${PANET_USERNAME} \
-        --password ${PANET_PASSWORD}
+        --username $(cat /run/secrets/pa_username) \
+        --password $(cat /run/secrets/pa_password)
 
 FROM ubuntu AS runner
 
