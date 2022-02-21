@@ -16,6 +16,7 @@ RUN --mount=type=secret,id=pa_user --mount=type=secret,id=pa_pass \
 FROM ubuntu AS runner
 
 ARG UID=999
+ARG GID=999
 ARG PA_STREAM_NAME=stable
 
 ENV INSTALL_LOC=/patserver
@@ -27,7 +28,7 @@ RUN apt-get update && \
     apt-get install -y libsdl2-2.0-0 libgl1 libstdc++6 libcurl3-gnutls libuuid1
 
 # Create user
-RUN useradd -m -u ${UID} patuser
+RUN useradd -m -u ${UID} -g ${GID} patuser
 USER patuser
 
 # Get the server files
