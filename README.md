@@ -29,6 +29,7 @@ Build Arg Key | Default | Decription
 `PANET_USERNAME` | N/A | Username to login to PANet with. Needs to own the game or be linked to a steam account which does. Required.
 `PANET_PASSWORD` | N/A | Password for the provided username. Required.
 `UID` | `999` | Unix UID to run the container as.
+`GID` | `999` | Unix GID to run the container as.
 
 **Note:** *Credentials for the account are **not stored in the final image**.*
 
