@@ -14,7 +14,8 @@ RUN mkdir -p /patserver && \
         --username ${PANET_USERNAME} \
         --password ${PANET_PASSWORD}
 
-FROM ubuntu AS runner
+ARG BASE_IMAGE=ubuntu
+FROM $BASE_IMAGE AS runner
 
 ARG UID=999
 ARG GID=999
