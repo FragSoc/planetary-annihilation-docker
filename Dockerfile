@@ -29,7 +29,8 @@ RUN apt-get update && \
     apt-get install -y libsdl2-2.0-0 libgl1 libstdc++6 libcurl3-gnutls libuuid1
 
 # Create user
-RUN useradd -m -u ${UID} -g ${GID} patuser
+RUN groupadd -g ${GID} patuser && \
+    useradd -m -u ${UID} -g patuser patuser
 USER patuser
 
 # Get the server files
