@@ -13,7 +13,8 @@ RUN --mount=type=secret,id=pa_user --mount=type=secret,id=pa_pass \
         --username $(cat /run/secrets/pa_user) \
         --password $(cat /run/secrets/pa_pass)
 
-FROM ubuntu AS runner
+ARG BASE_IMAGE=ubuntu
+FROM $BASE_IMAGE AS runner
 
 ARG UID=999
 ARG GID=999
@@ -28,7 +29,8 @@ RUN apt-get update && \
     apt-get install -y libsdl2-2.0-0 libgl1 libstdc++6 libcurl3-gnutls libuuid1
 
 # Create user
-RUN useradd -m -u ${UID} -g ${GID} patuser
+RUN groupadd -g ${GID} patuser && \
+    useradd -m -u ${UID} -g patuser patuser
 USER patuser
 
 # Get the server files

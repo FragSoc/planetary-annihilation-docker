@@ -7,7 +7,7 @@ success=$?
 exec 6>&- # close output connection
 exec 6<&- # close input connection
 
-if [[ $? != 0 ]]; then
+if [[ $success != 0 ]]; then
     exit 1
 else
     exit 0
